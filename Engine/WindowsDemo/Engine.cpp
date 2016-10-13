@@ -129,6 +129,11 @@ bool Engine::bufferModels()
 	mass = 1;
 	loadObjects(1, "images/Ground.png", loc, rot, size, vel, force, mass, AABB);
 
+	loc = { 0, 0, 0 };
+	size = { 0.2, 0.2, 0.2 };
+	rot = { 0, 0, 0 };
+	loadObjects(2, "images/Bird.png", loc, rot, size, vel, force, mass, AABB);
+
 
 	// Cornflower blue = for you XNA fans
 	glClearColor(0.392f, 0.584f, 0.929f, 1.0f);
@@ -343,6 +348,8 @@ bool Engine::gameLoop()
 		render(sm.getProgram(), uniformVar, 1, GL_FALSE, &obj[0].transform.objWorld[0][0], GL_TEXTURE_2D, textures[0], sphereModel);
 
 		render(sm.getProgram(), uniformVar, 1, GL_FALSE, &obj[1].transform.objWorld[0][0], GL_TEXTURE_2D, textures[1], boxModel);
+
+		render(sm.getProgram(), uniformVar, 1, GL_FALSE, &obj[2].transform.objWorld[0][0], GL_TEXTURE_2D, textures[0], boxModel);
 
 		glfwSwapBuffers(GLFWwindowPtr);
 

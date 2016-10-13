@@ -87,7 +87,7 @@ private:
 	//------------------------------------------------------->>MISCELLANEOUS VARIABLES<<
 	vec3 startLocation;				// Starting location of the boid
 
-	const float numObjects = 2;		// Number of objects that should exist - change this number to change the object numbers
+	const float numObjects = 3;		// Number of objects that should exist - change this number to change the object numbers
 	const float GRAVITY = -0.98;	// Gravity constant
 	const float LIMITER = -7;		// Deceleration constant
 
