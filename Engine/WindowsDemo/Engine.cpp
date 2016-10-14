@@ -159,8 +159,6 @@ bool Engine::gameLoop()
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
 
-	keyClicks = 0;
-
 	glm::mat4 translate;
 
 	glm::vec3 lightPos = glm::vec3(3, 0, 1.5);
@@ -188,31 +186,32 @@ bool Engine::gameLoop()
 			glfwSetWindowShouldClose(GLFWwindowPtr, GL_TRUE);
 		// Mouse button - does nothing right now
 		if (InputManager::keyIsDown[GLFW_MOUSE_BUTTON_1] && !InputManager::keyWasDown[GLFW_MOUSE_BUTTON_1]) {
-			keyClicks++;
+			keyboard["key"]++;
 		}
 		// Left arrow key - moves to the left - cannot be used with RAK
 		if (InputManager::keyIsDown[GLFW_KEY_LEFT]) {
-			leftClicks++;
+			keyboard["left"]++;
 		}
 		// Right arrow key - moves to the right - cannot be used with LAK
 		else if (InputManager::keyIsDown[GLFW_KEY_RIGHT]) {
-			rightClicks++;
+			keyboard["right"]++;
 		}
 		// Space bar - moves up (jumps)
 		if (InputManager::keyIsDown[GLFW_KEY_UP] && !InputManager::keyWasDown[GLFW_KEY_UP]) {
-			upClicks++;
+			keyboard["up"]++;
 		}
 		if (InputManager::keyIsDown[GLFW_KEY_S]) {
-			wsClicks++;
+			keyboard["s"]++;
 		}
 		else if (InputManager::keyIsDown[GLFW_KEY_W]) {
-			wsClicks--;
+			keyboard["w"]++;
 		}
 		if (InputManager::keyIsDown[GLFW_KEY_A]) {
-			adClicks++;
+			keyboard["a"]++;
+			std::cout << keyboard["a"] << std::endl;
 		}
 		else if (InputManager::keyIsDown[GLFW_KEY_D]) {
-			adClicks--;
+			keyboard["d"]++;
 		}
 		if (InputManager::keyIsDown[GLFW_KEY_R]) {
 			camera.transform.loc = glm::vec3(0, 0, 0);
@@ -220,7 +219,6 @@ bool Engine::gameLoop()
 		InputManager::keyWasDown = InputManager::keyIsDown;
 
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 
 		// Calculate the value of the transformation matrix for each object using glm\gtx\transform and glm\gtx\euler-angles and the object's transform data
 		for (int i = 0; i < numObjects; i++) {
@@ -237,15 +235,15 @@ bool Engine::gameLoop()
 				//obj[i].rBody.force.y += obj[i].rBody.mass * GRAVITY;
 				camera.pov.rBody.force.y += camera.pov.rBody.mass;
 
-				for (int j = 0; j < leftClicks; j++) {
+				for (int j = 0; j < keyboard["left"]; j++) {
 					//obj[i].rBody.force.x = -5;
 					camera.pov.rBody.force.x = -5;
 				}
-				for (int j = 0; j < rightClicks; j++) {
+				for (int j = 0; j < keyboard["right"]; j++) {
 					//obj[i].rBody.force.x = 5;
 					camera.pov.rBody.force.x = 5;
 				}
-				for (int j = 0; j < upClicks; j++) {
+				for (int j = 0; j < keyboard["up"]; j++) {
 					//obj[i].rBody.force.y = 95;
 					//obj[i].rBody.velocity.y = 0;
 					camera.pov.rBody.force.y = 95;
@@ -274,9 +272,12 @@ bool Engine::gameLoop()
 			obj[i].transform.loc += obj[i].rBody.velocity * (float)deltaTime;
 
 
-			leftClicks = 0;
-			rightClicks = 0;
-			upClicks = 0;
+			for (map<string, int>::iterator it = keyboard.begin(); it != keyboard.end(); it++) {
+				it = 0;
+			}
+
+
+
 			// TRANSLATE MATRIX
 			translate = { 1, 0, 0, obj[i].transform.loc.x,
 				0, 1, 0, obj[i].transform.loc.y,
@@ -305,9 +306,6 @@ bool Engine::gameLoop()
 		camera.pov.transform.loc += camera.pov.rBody.velocity * (float)deltaTime;
 
 
-		leftClicks = 0;
-		rightClicks = 0;
-		upClicks = 0;
 		// TRANSLATE MATRIX
 		translate = { 1, 0, 0, camera.pov.transform.loc.x,
 			0, 1, 0, camera.pov.transform.loc.y,
@@ -323,7 +321,7 @@ bool Engine::gameLoop()
 			glm::yawPitchRoll(camera.pov.transform.rot.y, camera.pov.transform.rot.x, camera.pov.transform.rot.z) *
 			glm::scale(camera.pov.transform.size);
 
-		updateCam(wsClicks, adClicks);
+		updateCam(keyboard["w"] - keyboard["s"], keyboard["a"] - keyboard["d"]);
 
 
 
@@ -664,9 +662,6 @@ void Engine::updateCam(int upDown, int leftRight)
 
 	// Just kidding; THIS is the last part. HERE we change the mat4 position based on the aforementioned step. Voila! Success.
 	camera.cameraMat = camera.transform.objWorld;
-
-	wsClicks = 0;
-	adClicks = 0;
 }
 
 void Engine::render(GLuint shader, GLint uniform, GLsizei i, GLboolean glBool, const GLfloat * value, GLenum target, GLuint texture, Model model)

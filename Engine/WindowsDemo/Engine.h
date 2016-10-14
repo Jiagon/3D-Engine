@@ -5,6 +5,7 @@
 
 #include <string>
 #include <ctime>
+#include <map>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtx/euler_angles.hpp>
 
@@ -12,6 +13,7 @@
 using glm::vec3;
 using glm::vec2;
 using std::map;
+using std::string;
 
 enum collider {
 	COLLIDERLESS,
@@ -91,12 +93,7 @@ private:
 	const float GRAVITY = -0.98;	// Gravity constant
 	const float LIMITER = -7;		// Deceleration constant
 
-	int keyClicks;					// To keep track of how many times the mouse has been pressed - FOR BOID
-	int leftClicks;					// To keep track of how many times the left arrow key has been pressed - FOR BOID
-	int rightClicks;				// To keep track of how many times the right arrow key has been pressed - FOR BOID
-	int upClicks;					// To keep track of how many times the up arrow key has been pressed - FOR BOID
-	int wsClicks;					// To keep track of how many times the w or s keys have been pressed - FOR CAMERA
-	int adClicks;					// To keep track of how many times the a or d keys have been presesed - FOR CAMERA
+	map<string, int> keyboard;		// Map to keep track of which character key was pressed and how many times - FOR CAMERA OBJECT
 
 public:
 	Engine();
