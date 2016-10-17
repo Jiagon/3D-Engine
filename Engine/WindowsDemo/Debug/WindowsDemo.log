@@ -1,11 +1,11 @@
 ﻿  Engine.cpp
-c:\users\samantha\documents\college\engine\engine\windowsdemo\engine.h(93): warning C4305: 'initializing': truncation from 'double' to 'const float'
-c:\users\samantha\documents\college\engine\engine\windowsdemo\engine.cpp(7): warning C4244: 'initializing': conversion from 'const float' to 'unsigned int', possible loss of data
-c:\users\samantha\documents\college\engine\engine\windowsdemo\engine.cpp(7): warning C4316: 'Object': object allocated on the heap may not be aligned 16
-c:\users\samantha\documents\college\engine\engine\windowsdemo\engine.cpp(8): warning C4244: 'initializing': conversion from 'const float' to 'unsigned int', possible loss of data
-c:\users\samantha\documents\college\engine\engine\windowsdemo\engine.cpp(176): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\samantha\documents\college\engine\engine\windowsdemo\engine.cpp(185): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\samantha\documents\college\engine\engine\windowsdemo\engine.cpp(450): warning C4316: 'Object': object allocated on the heap may not be aligned 16
-c:\users\samantha\documents\college\engine\engine\windowsdemo\engine.cpp(451): warning C4316: 'Object': object allocated on the heap may not be aligned 16
-LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  WindowsDemo.vcxproj -> C:\Users\Samantha\Documents\College\Engine\Engine\Debug\WindowsDemo.exe
+\\banner.main.ad.rit.edu\students\sxl9302\igmprofile\documents\_fun_\3d-engine\engine\windowsdemo\engine.h(93): warning C4305: 'initializing': truncation from 'double' to 'const float'
+\\banner.main.ad.rit.edu\students\sxl9302\igmprofile\documents\_fun_\3d-engine\engine\windowsdemo\engine.cpp(7): warning C4244: 'initializing': conversion from 'const float' to 'unsigned int', possible loss of data
+\\banner.main.ad.rit.edu\students\sxl9302\igmprofile\documents\_fun_\3d-engine\engine\windowsdemo\engine.cpp(7): warning C4316: 'Object': object allocated on the heap may not be aligned 16
+\\banner.main.ad.rit.edu\students\sxl9302\igmprofile\documents\_fun_\3d-engine\engine\windowsdemo\engine.cpp(8): warning C4244: 'initializing': conversion from 'const float' to 'unsigned int', possible loss of data
+\\banner.main.ad.rit.edu\students\sxl9302\igmprofile\documents\_fun_\3d-engine\engine\windowsdemo\engine.cpp(168): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\sxl9302\igmprofile\documents\_fun_\3d-engine\engine\windowsdemo\engine.cpp(181): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+\\banner.main.ad.rit.edu\students\sxl9302\igmprofile\documents\_fun_\3d-engine\engine\windowsdemo\engine.cpp(445): warning C4316: 'Object': object allocated on the heap may not be aligned 16
+\\banner.main.ad.rit.edu\students\sxl9302\igmprofile\documents\_fun_\3d-engine\engine\windowsdemo\engine.cpp(446): warning C4316: 'Object': object allocated on the heap may not be aligned 16
+  WindowsDemo.vcxproj -> \\banner.main.ad.rit.edu\students\sxl9302\IGMProfile\Documents\_FUN_\3D-Engine\Engine\Debug\WindowsDemo.exe
+  WindowsDemo.vcxproj -> \\banner.main.ad.rit.edu\students\sxl9302\IGMProfile\Documents\_FUN_\3D-Engine\Engine\Debug\WindowsDemo.pdb (Full PDB)

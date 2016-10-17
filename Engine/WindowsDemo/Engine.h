@@ -93,7 +93,6 @@ private:
 	const float GRAVITY = -0.98;	// Gravity constant
 	const float LIMITER = -7;		// Deceleration constant
 
-	map<string, int> keyboard;		// Map to keep track of which character key was pressed and how many times - FOR CAMERA OBJECT
 
 public:
 	Engine();

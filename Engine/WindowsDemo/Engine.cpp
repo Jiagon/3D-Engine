@@ -172,6 +172,10 @@ bool Engine::gameLoop()
 	while (!glfwWindowShouldClose(GLFWwindowPtr))
 	{
 
+		// Remake the variable every time to initialize it to 0
+		map<string, int> keyboard;		// Map to keep track of which character key was pressed and how many times - FOR CAMERA OBJECT
+
+
 		// Update time values
 		prevTime = currTime;
 		currTime = glfwGetTime();
@@ -208,7 +212,6 @@ bool Engine::gameLoop()
 		}
 		if (InputManager::keyIsDown[GLFW_KEY_A]) {
 			keyboard["a"]++;
-			std::cout << keyboard["a"] << std::endl;
 		}
 		else if (InputManager::keyIsDown[GLFW_KEY_D]) {
 			keyboard["d"]++;
@@ -272,9 +275,9 @@ bool Engine::gameLoop()
 			obj[i].transform.loc += obj[i].rBody.velocity * (float)deltaTime;
 
 
-			for (map<string, int>::iterator it = keyboard.begin(); it != keyboard.end(); it++) {
+			/*for (map<string, int>::iterator it = keyboard.begin(); it != keyboard.end(); it++) {
 				it = 0;
-			}
+			}*/
 
 
 
@@ -321,7 +324,7 @@ bool Engine::gameLoop()
 			glm::yawPitchRoll(camera.pov.transform.rot.y, camera.pov.transform.rot.x, camera.pov.transform.rot.z) *
 			glm::scale(camera.pov.transform.size);
 
-		updateCam(keyboard["w"] - keyboard["s"], keyboard["a"] - keyboard["d"]);
+		updateCam(keyboard["s"] - keyboard["w"], keyboard["a"] - keyboard["d"]);
 
 
 
