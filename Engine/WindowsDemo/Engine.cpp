@@ -663,8 +663,13 @@ void Engine::updateCam(int upDown, int leftRight)
 		glm::yawPitchRoll(camera.transform.rot.y, camera.transform.rot.x, camera.transform.rot.z) *
 		glm::scale(camera.transform.size);
 
+	glm::mat3 R = (glm::mat3)glm::yawPitchRoll(camera.transform.rot.y, camera.transform.rot.x, camera.transform.rot.z);
+
+	//camera.transform.objWorld = 
+
 	// Just kidding; THIS is the last part. HERE we change the mat4 position based on the aforementioned step. Voila! Success.
-	camera.cameraMat = camera.transform.objWorld;
+	camera.cameraMat = glm::perspective(camera.fov, camera.aspect, camera.zNear, camera.zFar) * glm::lookAt(camera.transform.loc, camera.transform.loc + (R* vec3(0, 0, -1)), R * vec3(0, 1, 0)); ;
+	//camera.transform.objWorld;
 }
 
 void Engine::render(GLuint shader, GLint uniform, GLsizei i, GLboolean glBool, const GLfloat * value, GLenum target, GLuint texture, Model model)
